@@ -1,0 +1,40 @@
+<h1><strong><%= @event.name %></strong></h1>
+
+<ul>
+  <img src="<%= MyEvents.ImageUploader.url({@event.image, @event})%>" width="200" height="200">
+
+  <li>
+    <strong>City:</strong>
+    <%= @event.city %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @event.description %>
+  </li>
+
+  <li>
+    <strong>Event date:</strong>
+    <%= @event.event_date %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </li>
+
+  <li>
+    <strong>Organizer:</strong>
+    <%= @org.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Изменить", to: Routes.event_path(@conn, :edit, @event) %></span>
+<span><%= link "Удалить", to: Routes.event_path(@conn, :delete, @event), method: :delete, data: [confirm: "Are you sure?"] %></span>
+<span><%= link "Список", to: Routes.event_path(@conn, :index) %></span>

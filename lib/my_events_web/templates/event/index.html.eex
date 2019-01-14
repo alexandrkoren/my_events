@@ -1,0 +1,41 @@
+<table>
+  <tbody>
+    <td><span><%= link "Ближайшие", to: Routes.event_path(@conn, :future) %></span></td>
+    <td><span><%= link "Прошедшие", to: Routes.event_path(@conn, :previous) %></span></td>
+    <td><span><%= link "Все", to: Routes.event_path(@conn, :index) %></span></td>
+    <td><span><%= link "Создать событие", to: Routes.event_path(@conn, :new) %></span></td>
+  </tbody>
+</table>
+
+<h1>Список мероприятий</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Event date</th>
+      <th>Location</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for event <- @events do %>
+    <tr>
+      <td><%= event.city %></td>
+      <td><%= event.name %></td>
+      <td><%= event.description %></td>
+      <td><%= event.event_date %></td>
+      <td><%= event.location %></td>
+
+      <td>
+        <%= link "Подробнее", to: Routes.event_path(@conn, :show, event) %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= pagination_links @events, view_style: :materialize %>

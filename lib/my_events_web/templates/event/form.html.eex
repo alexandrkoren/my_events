@@ -1,0 +1,39 @@
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :city %>
+  <%= text_input f, :city%>
+  <%= error_tag f, :city %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :description %>
+  <%= text_input f, :description%>
+  <%= error_tag f, :description %>
+
+  <%= label f, :event_date %>
+  <%= date_select f, :event_date %>
+  <%= error_tag f, :event_date %>
+
+  <%= label f, :location %>
+  <%= text_input f, :location, id: "address"  %>
+  <%= error_tag f, :location %>
+
+  <%= label f, :organizer_id %>
+  <%= number_input f, :organizer_id %>
+  <%= error_tag f, :organizer_id %>
+
+  <%= label f, :image %>
+  <div class="file">Choose file<%= file_input f, :image, class: "hide_file" %></div>
+  <%= error_tag f, :image %>
+  
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
